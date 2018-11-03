@@ -11,7 +11,7 @@ class Particle {
   }
 
   PVector move() {
-    float angle = noise(this.pos.x/noiseScale, this.pos.y/noiseScale);
+    float angle = noise(this.pos.x/noiseScale, this.pos.y/noiseScale) * PI/2;
     dir.x = cos(angle);
     dir.y = sin(angle);
     vel = dir.copy();
@@ -22,7 +22,7 @@ class Particle {
   }
 
   boolean isOnEdge() {
-    return pos.x > width || pos.x < 0 || pos.y > height || pos.y < 0;  
+    return pos.x > drawingWidth || pos.x < 0 || pos.y > drawingHeight || pos.y < 0;  
   }
 
   void display() {

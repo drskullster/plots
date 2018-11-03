@@ -2,9 +2,9 @@ import hpglgraphics.*;
 
 HPGLGraphics hpgl;
 
-int nums = 200;
-int iterations = 800;
-int noiseScale = 600;
+int nums = 100; // times number of colors
+int iterations = 3000;
+int noiseScale = 100;
 boolean isSaving = false;
 
 void setup() {
@@ -12,7 +12,7 @@ void setup() {
 
   hpgl = (HPGLGraphics) createGraphics(width, height, HPGLGraphics.HPGL);
   hpgl.setPaperSize("A4");
-  hpgl.setPath("flow_lines.hpgl");
+  hpgl.setPath("output.hpgl");
 
   background(255);
 }
@@ -41,11 +41,17 @@ void draw() {
   noLoop();
 }
 
-void drawLines() { 
+void drawLines() {
   Particle[] particles = new Particle[nums];
 
   for (int i = 0; i < nums; i++) {
-    PVector startPos = new PVector(random(0, width), random(0, height));
+    PVector startPos;
+    if(random(0, 1) > 0.5) {
+      startPos = new PVector(0, random(0, height));
+    } else {
+      startPos = new PVector(random(0, width), 0);
+    }
+
     particles[i] = new Particle(startPos.x, startPos.y);
     beginShape();
     for (int j = 0; j < iterations; j++) {
