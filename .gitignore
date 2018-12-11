@@ -1,4 +1,5 @@
 _not_ready/*
+*.hpgl
 
 # Compiled class file
 *.class
