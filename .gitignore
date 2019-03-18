@@ -1,5 +1,6 @@
 _not_ready/*
 *.hpgl
+*.jpg
 
 # Compiled class file
 *.class
